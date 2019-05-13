@@ -1,10 +1,14 @@
 const Discogs = require('disconnect').Client
-const discogs = new Discogs({ userToken: userToken })
+const discogs = new Discogs({ userToken: 'FlXtWCIhazFneRgHbghHuXhEaYbFfThLhhIhjQBB' })
 
-discogs.database.search(params.query, { type: 'master', per_page: 2000 }, function (error, data) {
+const hello = discogs.database.search(params.query, { type: 'master', per_page: 20 }, function (error, data) {
     resultCallback(data)
 })
 
-discogs.database.getMaster(id, function (err, master) {
+const hi = discogs.database.getMaster(id, function (err, master) {
     resultCallback(master)
 })
+
+function resultCallback (info) {
+    console.log(info)
+}
