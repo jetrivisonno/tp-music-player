@@ -10,3 +10,7 @@ discogs.database.getMaster(id, function (err, master) {
     if (err) throw err
     resultCallback(master)
 })
+
+function resultCallback (data) {
+    console.log(data)
+}
