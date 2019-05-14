@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ButtonComponent = ({ type,onclick}) => (
+const ButtonComponent = ({ type, onClick }) => (
     <div>
         <input
             type={type}
-            onClick ={onclick}
+            onClick={onClick}
         />
     </div>
 )

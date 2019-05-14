@@ -6,7 +6,6 @@ const search = require('../service/discogs.js')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
 
 class SearchContainer extends Component {
-
     onInputComplete (event) {
         if (event.charCode === KEY_ENTER) {
             search.search(event.target.value, { type: 'master', per_page: 10 }, function (err, data) {
@@ -17,9 +16,8 @@ class SearchContainer extends Component {
         }
     }
 
-    searchString ()
-    {
-
+    searchString () {
+        //
     }
 
     render () {
@@ -32,8 +30,8 @@ class SearchContainer extends Component {
                     searchbar={this.onInputComplete}
                 />
                 <ButtonComponent
-                type ='submit'
-                onClick={this.onInputComplete}
+                    type='submit'
+                    onClick={this.onInputComplete}
                 />
             </header>
         )
