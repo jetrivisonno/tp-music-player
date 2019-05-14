@@ -17,10 +17,11 @@ class AppContainer extends Component {
 
     search (event) {
         if (event.charCode === KEY_ENTER) {
-            discog.search(event.target.value, { type: 'master', per_page: 10 }, function (err, data) {
+            discog.search(event.target.value, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
-                console.log(data.results)
+                this.setState({ selection: data.results })
             })
+            event.target.value = ''
         }
     }
 
