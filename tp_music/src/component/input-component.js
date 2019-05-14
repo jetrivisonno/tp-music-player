@@ -1,12 +1,12 @@
 import React from 'react'
 
-const InputComponent = ({ text, type, id, name }) => (
+const InputComponent = ({ type, id, name }) => (
     <div>
-        <label htmlFor={id}>{text}</label>
         <input
             type={type}
             id={id}
             name={name}
+            placeholder={type}
         />
     </div>
 )
