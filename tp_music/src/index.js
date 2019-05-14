@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import ApplicationContainer from 'container/application-container'
+// import ApplicationContainer from 'container/application-container'
+
+import SearchContainer from 'container/search-container.js'
 
 ReactDOM.render(
-    <ApplicationContainer />,
+    <SearchContainer />,
     document.getElementById('app')
 )
