@@ -23,12 +23,14 @@ const searchbar = function () {
 class SearchContainer extends Component {
     render () {
         return (
-            <InputComponent
-                type='search'
-                id='search_id'
-                name='search'
-                searchbar={searchbar}
-            />
+            <header>
+                <InputComponent
+                    type='search'
+                    id='search_id'
+                    name='search'
+                    searchbar={searchbar}
+                />
+            </header>
         )
     }
 }
