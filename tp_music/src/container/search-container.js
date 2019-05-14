@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import InputComponent from 'component/input-component'
-import ButtonComponent from 'component/button-component'
+// import ButtonComponent from 'component/button-component'
 
 const search = require('../service/discogs.js')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
@@ -10,15 +10,16 @@ class SearchContainer extends Component {
         if (event.charCode === KEY_ENTER) {
             search.search(event.target.value, { type: 'master', per_page: 10 }, function (err, data) {
                 if (err) throw err
+<<<<<<< HEAD
                 // console.log(data.results)
                 this.props.createDataArray(data.results)
                 // instead of logging the data, send to the display component for the user to choose from
+=======
+                this.props.getResult(data.results)
+                console.log(data.results)
+>>>>>>> be54aa7f85776bcd6b0d550564ca5f9c3fdb368e
             })
         }
-    }
-
-    searchString () {
-        //
     }
 
     render () {
@@ -30,10 +31,10 @@ class SearchContainer extends Component {
                     name='search'
                     searchbar={this.onInputComplete}
                 />
-                <ButtonComponent
+                {/* <ButtonComponent
                     type='submit'
                     onClick={this.onInputComplete}
-                />
+                /> */}
             </header>
         )
     }
