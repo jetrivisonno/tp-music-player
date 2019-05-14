@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 
 // import ApplicationContainer from 'container/application-container'
 
-import SearchContainer from 'container/search-container.js'
+import AppContainer from 'container/app-container.js'
 
 ReactDOM.render(
-    <SearchContainer />,
+    <AppContainer />,
     document.getElementById('app')
 )
