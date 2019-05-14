@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 
-import SearchContainer from 'container/search-container'
-// import SelectionContainer from 'container/selection-container'
+import SearchBar from 'component/search-bar'
+
+const Discogs = require('disconnect').Client
+const dis = new Discogs('tc_jt_ie/1.0', { userToken: 'FlXtWCIhazFneRgHbghHuXhEaYbFfThLhhIhjQBB' })
+const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
 
 class AppContainer extends Component {
     constructor () {
@@ -9,36 +12,26 @@ class AppContainer extends Component {
         this.state = {
             selection: []
         }
-<<<<<<< HEAD
-        this.createData = this.createData.bind(this)
+        this.search = this.search.bind(this)
     }
 
-    createData (x) {
-        this.setState({ data: x })
-=======
-        this.getResult = this.getResult.bind(this)
-    }
-
-    /**
-     *
-     * @param {array containing results from discogs API} result
-     */
-    getResult (result) {
-        console.log(result)
-        // this.setState({ selection: result })
->>>>>>> be54aa7f85776bcd6b0d550564ca5f9c3fdb368e
+    search (event) {
+        if (event.charCode === KEY_ENTER) {
+            dis.database().search(event.target.value, { type: 'master', per_page: 10 }, function (err, data) {
+                if (err) throw err
+                console.log(data.results)
+            })
+        }
     }
 
     render () {
         return (
             <div>
-<<<<<<< HEAD
-                <SearchContainer createDataArray={this.createData} />
-                <SelectionContainer />
-=======
-                <SearchContainer getResult={this.getResult} />
-                {/* <SelectionContainer /> */}
->>>>>>> be54aa7f85776bcd6b0d550564ca5f9c3fdb368e
+                <SearchBar
+                    id='searchbar_id'
+                    name='searchbar'
+                    method={this.search}
+                />
             </div>
         )
     }
