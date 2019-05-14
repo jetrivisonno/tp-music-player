@@ -9,7 +9,7 @@ class SearchContainer extends Component {
         if (event.charCode === KEY_ENTER) {
             search.search(event.target.value, { type: 'master', per_page: 10 }, function (err, data) {
                 if (err) throw err
-                console.log(data)
+                console.log(data.results)
                 // instead of logging the data, send to the display component for the user to choose from
             })
         }
