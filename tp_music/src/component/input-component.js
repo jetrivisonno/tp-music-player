@@ -2,8 +2,11 @@ import React from 'react'
 
 const search = require('../service/discogs.js')
 
-const doSomething = function () {
-    search.search
+const searchbar = function () {
+    search.search('metal', { type: 'master', per_page: 5 }, function (err, data) {
+        if (err) throw err
+        console.log(data)
+    })
 }
 
 const InputComponent = ({ type, id, name }) => (
@@ -13,7 +16,7 @@ const InputComponent = ({ type, id, name }) => (
             id={id}
             name={name}
             placeholder={type}
-            onBlur={doSomething}
+            onBlur={searchbar}
         />
     </div>
 )
