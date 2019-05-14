@@ -3,7 +3,7 @@ import React from 'react'
 const search = require('../service/discogs.js')
 
 const doSomething = function () {
-    search.search()
+    search.search
 }
 
 const InputComponent = ({ type, id, name }) => (
