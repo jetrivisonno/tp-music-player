@@ -1,7 +1,7 @@
 class Track {
     constructor (id, playlistId, title, url, masterId, coverImg) {
         this.id = id // id
-        this.playlistId = playlistId
+        this.playlistId = playlistId // playlist genre id
         this.title = title // title
         this.url = url // master_url
         this.masterId = masterId // master_id
