@@ -7,15 +7,25 @@ class AppContainer extends Component {
     constructor () {
         super()
         this.state = {
-            data: [],
-            searchData: []
+            selection: []
         }
+        this.getResult = this.getResult.bind(this)
     }
+
+    /**
+     *
+     * @param {array containing results from discogs API} result
+     */
+    getResult (result) {
+        console.log(result)
+        // this.setState({ selection: result })
+    }
+
     render () {
         return (
             <div>
-                <SearchContainer />
-                <SelectionContainer />
+                <SearchContainer getResult={this.getResult} />
+                {/* <SelectionContainer /> */}
             </div>
         )
     }
