@@ -9,13 +9,6 @@ class AppContainer extends Component {
         this.state = {
             selection: []
         }
-<<<<<<< HEAD
-        this.createData = this.createData.bind(this)
-    }
-
-    createData (x) {
-        this.setState({ data: x })
-=======
         this.getResult = this.getResult.bind(this)
     }
 
@@ -26,7 +19,6 @@ class AppContainer extends Component {
     getResult (result) {
         console.log(result)
         // this.setState({ selection: result })
->>>>>>> be54aa7f85776bcd6b0d550564ca5f9c3fdb368e
     }
 
     render () {
