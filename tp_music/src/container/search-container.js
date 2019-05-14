@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import InputComponent from 'component/input-component'
+import ButtonComponent from 'component/button-component'
 
 const search = require('../service/discogs.js')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
 
 class SearchContainer extends Component {
+
     onInputComplete (event) {
         if (event.charCode === KEY_ENTER) {
             search.search(event.target.value, { type: 'master', per_page: 10 }, function (err, data) {
@@ -15,6 +17,11 @@ class SearchContainer extends Component {
         }
     }
 
+    searchString ()
+    {
+
+    }
+
     render () {
         return (
             <header>
@@ -23,6 +30,10 @@ class SearchContainer extends Component {
                     id='search_id'
                     name='search'
                     searchbar={this.onInputComplete}
+                />
+                <ButtonComponent
+                type ='submit'
+                onClick={this.onInputComplete}
                 />
             </header>
         )
