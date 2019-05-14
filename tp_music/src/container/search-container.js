@@ -5,7 +5,9 @@ class SearchContainer extends Component {
     render () {
         return (
             <InputComponent
-                yo={text : '', type : '', name : '', id : ''}
+                type='search'
+                id='search_id'
+                name='search'
             />
         )
     }
