@@ -16,7 +16,7 @@
         "postgresql",
         "tp"
     ],
-    "author": "thomas caissie, jonathan trivisonno, ismael",
+    "author": "thomas caissie, jonathan trivisonno, ismael elamri",
     "license": "MIT",
     "devDependencies": {
         "@babel/core": "^7.4.4",

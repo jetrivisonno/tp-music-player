@@ -11,14 +11,14 @@ function connect () {
         password: 'postgres'
     })
 
-    client.connect((error) => {
-        if (error) throw error
+    client.connect((err) => {
+        if (err) throw err
     })
 }
 
 function query (query, values, callback) {
-    client.query(query, values, (error, result) => {
-        if (error) throw error
+    client.query(query, values, (err, result) => {
+        if (err) throw err
         callback(result)
     })
 }
