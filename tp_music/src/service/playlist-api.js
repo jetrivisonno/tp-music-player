@@ -1,8 +1,18 @@
 const db = require('../server/db')
 
-function getPlaylists () {
+const allPlaylist = 'select * from playlist;'
+
+function getPlaylists (element) {
     db.connect()
-    db.query(query, [], callback)
-    // put the db.disconnect in the callback
-    // the return should get into the this.state.playlist of AppContainer
+    db.query(allPlaylist, [], (err, result) => {
+        if (err) throw err
+        if (result.rowCount > 0) {
+            element.setState(result.rows) // element being this passed in parameters
+        }
+        db.disconnect()
+    })
+}
+
+module.exports = {
+    getPlaylists: getPlaylists
 }
