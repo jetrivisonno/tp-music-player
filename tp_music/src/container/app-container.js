@@ -4,7 +4,7 @@ import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
 
 const discog = require('../service/discogs')
-const yo = require('../service/playlist-api')
+// const yo = require('../service/playlist-api')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
 
 class AppContainer extends Component {
