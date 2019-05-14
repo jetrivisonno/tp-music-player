@@ -1,20 +1,18 @@
-// import React from 'react'
+import React from 'react'
 
-// function generateSuggestion (datas) {
-//     datas.map(function (data) {
-//         return (
-//             <li>
-//                 <img src={data.coverImg} />
-//                 <p>{data.title}</p>
-//             </li>
-//         )
-//     })
-// }
+function generateSuggestion (datas) {
+    return datas.map(function (data) {
+        return (
+            <li>
+                <img src={data.coverImg} />
+                <h2>{data.title}</h2>
+            </li>
+        )
+    })
+}
 
-// const selection = ({ data }) => (
-//     <li>
-//         <img src={data} />
-//         <p />
-//         <p />
-//     </li>
-// )
+const SelectionComponent = ({ data }) => (
+    generateSuggestion(data)
+)
+
+export default SelectionComponent

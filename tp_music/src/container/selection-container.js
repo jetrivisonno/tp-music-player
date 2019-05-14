@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 
-class SelectionComponent extends Component {
+import SelectionComponent from 'component/selection-component'
+
+class SelectionContainer extends Component {
     render () {
         return (
             <section>
                 <ul>
-                    {/* insert choice here */}
+                    <SelectionComponent
+                        data={[{ title: 'yo', coverImg: 'yo' }]}
+                    />
                 </ul>
             </section>
         )
     }
 }
 
-export default SelectionComponent
+export default SelectionContainer

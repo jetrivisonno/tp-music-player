@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 
+import SearchContainer from 'container/search-container'
+import SelectionContainer from 'container/selection-container'
+
 class AppContainer extends Component {
-    // include the sections in order
+    render () {
+        return (
+            <div>
+                <SearchContainer />
+                <SelectionContainer />
+            </div>
+        )
+    }
 }
 
 export default AppContainer
