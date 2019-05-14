@@ -24,13 +24,8 @@ class AppContainer extends Component {
     render () {
         return (
             <div>
-<<<<<<< HEAD
-                <SearchContainer createDataArray={this.createData} />
-                <SelectionContainer />
-=======
                 <SearchContainer getResult={this.getResult} />
                 {/* <SelectionContainer /> */}
->>>>>>> be54aa7f85776bcd6b0d550564ca5f9c3fdb368e
             </div>
         )
     }
