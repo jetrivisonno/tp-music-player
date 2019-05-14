@@ -10,6 +10,7 @@ class AppContainer extends Component {
     constructor () {
         super()
         this.state = {
+            playlist: [],
             selection: []
         }
         this.search = this.search.bind(this)
@@ -36,7 +37,7 @@ class AppContainer extends Component {
                 <PlaylistBar
                     id='playlistbar_id'
                     name='playlistbar'
-                    options={[{ text: 'hello' }, { text: 'hulla' }]}
+                    options={this.state.playlist}
                 />
             </div>
         )

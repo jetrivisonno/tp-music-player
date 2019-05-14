@@ -10,9 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    // require the discog up top
-    // insert discog method to fetch info from api
-    // read the data
+    res.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
+    res.end()
 })
 
 app.listen(PORT, () => {
