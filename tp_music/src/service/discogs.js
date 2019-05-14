@@ -3,7 +3,7 @@ const dis = new Discogs('tc_jt_ie/1.0', { userToken: 'FlXtWCIhazFneRgHbghHuXhEaY
 // we could store the token in a txt file and fetch it on app start
 
 const search = function (input, pagination, callback) {
-    dis.database().search(input, pagination, callback)
+    return dis.database().search(input, pagination, callback)
 }
 
 const getMaster = function (masterId, callback) {
