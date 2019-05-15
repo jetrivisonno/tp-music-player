@@ -16,7 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.get('/api/playlist', (req, res) => {
+    console.log('1')
     console.log(playlist.getPlaylists())
+    console.log('5')
     res.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
     res.end()
 })
