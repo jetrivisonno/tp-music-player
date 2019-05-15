@@ -10,17 +10,15 @@ const playlist = require('./src/service/playlist-api')
 
 const HTTP_SUCCESS = 200
 const CONTENT_TYPE_JSON = 'application/json'
-// const CONTENT_TYPE_HTML = 'text/html'
+const CONTENT_TYPE_HTML = 'text/html'
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.get('/api/playlist', (req, res) => {
-    const playlists = playlist.getPlaylists()
-    console.log(playlists)
+    console.log(playlist.getPlaylists())
     res.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
-    console.log('hello')
-    res.sendFile('src/index.html', { 'Content-Type': CONTENT_TYPE_HTML })
+    res.end()
 })
 
 app.listen(PORT, () => {

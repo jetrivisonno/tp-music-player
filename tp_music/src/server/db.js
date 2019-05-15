@@ -13,26 +13,21 @@ function connect () {
 
     client.connect((err) => {
         if (err) throw err
+        console.log('connected to database')
     })
 }
 
-function query (query) {
-    client.query(query)
-        .then(res => {
-            return res.rows
-        })
-        .catch(e => console.error(e.stack))
+function query (query, values, callback) {
+    client.query(query, values, (err, result) => {
+        if (err) throw err
+        console.log('fetched from database')
+        callback(result)
+    })
 }
-
-// function query (query, values, callback) {
-//     client.query(query, values, (err, result) => {
-//         if (err) throw err
-//         callback(result)
-//     })
-// }
 
 function disconnect () {
     client.end()
+    console.log('disconnected to database')
 }
 
 module.exports = {
