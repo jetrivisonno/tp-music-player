@@ -1,9 +1,9 @@
 const db = require('../server/db')
 
-function getPlaylists () {
+function getPlaylists (callback) {
     db.connect()
-    db.query('SELECT * FROM playlist;', [], function (result) {
-        console.log(result.rows)
+    db.query('SELECT * FROM playlist;', [], (result) => {
+        callback(result)
         db.disconnect()
     })
 }
