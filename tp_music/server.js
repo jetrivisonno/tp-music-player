@@ -3,7 +3,6 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-// const path = require('path')
 const PORT = 8080
 
 const playlist = require('./src/service/playlist-api')
