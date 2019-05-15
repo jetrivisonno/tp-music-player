@@ -4,7 +4,6 @@ import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
 
 const discog = require('../service/discogs')
-const yo = require('../service/playlist-api')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
 
 class AppContainer extends Component {
@@ -15,7 +14,7 @@ class AppContainer extends Component {
             selection: []
         }
         this.search = this.search.bind(this)
-        this.initializePlaylists = this.initializePlaylists.bind(this)
+        this.getPlaylists = this.getPlaylists.bind(this)
     }
 
     search (event) {
@@ -26,6 +25,15 @@ class AppContainer extends Component {
             })
             event.target.value = ''
         }
+    }
+
+    getPlaylists () {
+        fetch('/api/playlist', { method: 'GET' })
+            .then(response => console.log(response))
+            .then(response => response.json())
+            .then(response => {
+                this.setState({ playlist: response })
+            })
     }
 
     render () {
