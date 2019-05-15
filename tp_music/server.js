@@ -16,8 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.get('/api/playlist', (req, res) => {
-    const playlists = playlist.getPlaylists()
-    console.log(playlists)
+    console.log(playlist.getPlaylists())
     res.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
     res.end()
 })
