@@ -9,7 +9,6 @@ function getPlaylists () {
     //     }
     //     db.disconnect()
     // })
-    results = db.query('SELECT * FROM playlist;')
     return results
 }
 
