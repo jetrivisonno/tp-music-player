@@ -15,7 +15,7 @@ class AppContainer extends Component {
             selection: []
         }
         this.search = this.search.bind(this)
-        this.initializePlaylists = this.initializePlaylists.bind(this)
+        // this.initializePlaylists = this.initializePlaylists.bind(this)
     }
 
     search (event) {
@@ -26,6 +26,10 @@ class AppContainer extends Component {
             })
             event.target.value = ''
         }
+    }
+
+    getPlaylists () {
+        console.log(data)
     }
 
     render () {
