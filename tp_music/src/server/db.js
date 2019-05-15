@@ -16,12 +16,20 @@ function connect () {
     })
 }
 
-function query (query, values, callback) {
-    client.query(query, values, (err, result) => {
-        if (err) throw err
-        callback(result)
-    })
+function query (query) {
+    client.query(query)
+        .then(res => {
+            return res.rows
+        })
+        .catch(e => console.error(e.stack))
 }
+
+// function query (query, values, callback) {
+//     client.query(query, values, (err, result) => {
+//         if (err) throw err
+//         callback(result)
+//     })
+// }
 
 function disconnect () {
     client.end()

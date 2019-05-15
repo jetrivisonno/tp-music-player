@@ -1,16 +1,16 @@
 const db = require('../server/db')
 
-const allPlaylist = 'SELECT * FROM playlist;'
-
-function getPlaylists (element) {
+function getPlaylists () {
     db.connect()
-    db.query(allPlaylist, [], (result) => {
-        if (result.rowCount > 0) {
-            console.log(result.rows)
-            element.setState(result.rows) // element being this passed in parameters
-        }
-        db.disconnect()
-    })
+    let results = []
+    // db.query('SELECT * FROM playlist;', [], (result) => {
+    //     if (result.rowCount > 0) {
+    //         results = result.rows
+    //     }
+    //     db.disconnect()
+    // })
+    results = db.query('SELECT * FROM playlist;')
+    return results
 }
 
 module.exports = {
