@@ -2,12 +2,10 @@ const db = require('../server/db')
 
 function getPlaylists () {
     db.connect()
-    let results = []
-    db.query('SELECT * FROM playlist;', [], (result) => {
-        results = result
+    db.query('SELECT * FROM playlist;', [], function (result) {
+        console.log(result.rows)
         db.disconnect()
     })
-    return results
 }
 
 module.exports = {

@@ -13,21 +13,18 @@ function connect () {
 
     client.connect((err) => {
         if (err) throw err
-        console.log('connected to database')
     })
 }
 
 function query (query, values, callback) {
     client.query(query, values, (err, result) => {
         if (err) throw err
-        console.log('fetched from database')
         callback(result)
     })
 }
 
 function disconnect () {
     client.end()
-    console.log('disconnected to database')
 }
 
 module.exports = {
