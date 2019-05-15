@@ -5,16 +5,18 @@ import PlaylistBar from '../component/playlist-bar'
 
 const discog = require('../service/discogs')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
-
 class AppContainer extends Component {
     constructor () {
         super()
         this.state = {
             playlist: [],
-            selection: []
+            selection: [],
+            name: ''
         }
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleIn = this.handleChange.bind(this)
     }
 
     search (event) {
@@ -24,6 +26,9 @@ class AppContainer extends Component {
                 this.setState({ selection: data.results })
             })
             event.target.value = ''
+        } else {
+            event.preventDefault()
+            console.log(this.state.name)
         }
     }
 
@@ -36,20 +41,30 @@ class AppContainer extends Component {
             })
     }
 
+    handleChange (event) {
+        this.setState({
+            name: event.target.value
+        })
+    }
+
     render () {
         return (
             <div>
                 <SearchBar
                     id='searchbar_id'
                     name='searchbar'
-                    method={this.search}
+                    value={this.state.value}
+                    onSubmit={this.search}
+                    onChange={this.handleChange}
                 />
                 <PlaylistBar
                     id='playlistbar_id'
                     name='playlistbar'
                     options={this.state.playlist}
                 />
+
             </div>
+
         )
     }
 }
