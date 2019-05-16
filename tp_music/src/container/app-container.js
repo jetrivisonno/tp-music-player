@@ -75,6 +75,7 @@ class AppContainer extends Component {
                     name='playlistbar'
                     options={this.state.playlists}
                 />
+                {console.log(this.state.selections)}
                 <SearchResult
                     id='searchresult_id'
                     selections={this.state.selections}

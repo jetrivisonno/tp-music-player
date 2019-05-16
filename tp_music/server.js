@@ -3,6 +3,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const path = require('path')
 const cors = require('cors')
 const PORT = 8080
 
@@ -14,6 +15,7 @@ const CONTENT_TYPE_JSON = 'application/json'
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname, '/css')))
 app.use(cors())
 // another way to allow access-control
 // app.use(function (request, response, next) {
