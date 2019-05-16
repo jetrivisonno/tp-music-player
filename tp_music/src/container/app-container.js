@@ -12,7 +12,8 @@ class AppContainer extends Component {
         this.state = {
             playlists: [],
             selection: [],
-            name: ''
+            name: '',
+            buttonUsed: false
         }
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
@@ -26,12 +27,14 @@ class AppContainer extends Component {
                 this.setState({ selection: data.results })
             })
             event.target.value = ''
-        } else {
+        } else if (this.state.buttonUsed) {
             event.preventDefault()
             discog.search(this.state.name, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
                 this.setState({ selection: data.results })
+                console.log(this.state.selection)
             })
+            this.setState({ buttonUsed: false })
         }
     }
 
@@ -45,7 +48,8 @@ class AppContainer extends Component {
 
     handleChange (event) {
         this.setState({
-            name: event.target.value
+            name: event.target.value,
+            buttonUsed: true
         })
     }
 
