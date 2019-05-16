@@ -3,6 +3,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const PORT = 8080
 
 const playlist = require('./src/service/playlist-api')
@@ -13,20 +14,14 @@ const CONTENT_TYPE_JSON = 'application/json'
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cors())
 
-<<<<<<< HEAD
-app.get('/playlists', (req, res) => {
-    console.log('hello')
+app.get('/apis/playlists', function (request, response) {
     playlist.getPlaylists(function (result) {
-        const data = JSON.stringify(result)
-        res.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
-        res.end(data)
-=======
-app.get('/', function (request, response) {
-    playlist.getPlaylists(function (result) {
+        // response.writeHead('Access-Control-Allow-Origin', '*')
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
->>>>>>> 7aeca04020108a5627068535ac150fd13c182d36
+        console.log(result.rows)
     })
 })
 

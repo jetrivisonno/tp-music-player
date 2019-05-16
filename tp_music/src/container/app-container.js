@@ -39,8 +39,8 @@ class AppContainer extends Component {
     }
 
     getPlaylists () {
-        fetch('localhost:8080/api/playlists', { method: 'GET' })
-            .then(response => console.log(response))
+        fetch('http://localhost:8080/apis/playlists', { method: 'GET' })
+            .then(response => JSON.parse(response))
             .then(response => response.json())
             .then(response => {
                 this.setState({ playlist: response })
