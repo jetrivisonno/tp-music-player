@@ -65,10 +65,8 @@ class AppContainer extends Component {
                 <SearchBar
                     id='searchbar_id'
                     name='searchbar'
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                    type='button'
-                    onClick={this.search}
+                    methodChange={this.handleChange}
+                    methodSubmit={this.search}
                 />
 
                 <PlaylistBar

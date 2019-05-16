@@ -1,9 +1,9 @@
 import React from 'react'
 
-const SearchBar = ({ id, name, method, type, onClick }) => (
+const SearchBar = ({ id, name, methodSearch, methodSubmit }) => (
     <div>
-        <input id={id} type='search' name={name} placeholder={name} onKeyPress={method} />
-        <button type={type} onClick={onClick}>Submit</button>
+        <input id={id} type='search' name={name} placeholder={name} onKeyPress={methodSearch} />
+        <input type='submit' onClick={methodSubmit} value={name} />
     </div>
 )
 
