@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
-import ButtonBar from 'component/button-bar'
 
 const discog = require('../service/discogs')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
@@ -25,7 +24,6 @@ class AppContainer extends Component {
             discog.search(event.target.value, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
                 this.setState({ selection: data.results })
-                console.log(data.results)
             })
             event.target.value = ''
         } else {
@@ -63,9 +61,6 @@ class AppContainer extends Component {
                     name='searchbar'
                     value={this.state.value}
                     onChange={this.handleChange}
-                    method={this.search}
-                />
-                <ButtonBar
                     type='button'
                     onClick={this.search}
                 />
