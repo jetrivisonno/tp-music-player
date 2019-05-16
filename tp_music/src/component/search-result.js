@@ -1,22 +1,22 @@
 import React from 'react'
 
-function generateResult (selections) {
-    selections.map(function (selection) {
-        return (
+function generateResult (selection, index) {
+    return (
+        <li key={index}>
+            <img src={selection.cover_image} />
             <div>
-                <img src={selection.cover_image} />
-                <div>
-                    <h3>{selection.title}</h3>
-                    <p>{selection.genre[0]}</p>
-                </div>
+                <h3>{selection.title}</h3>
+                <p>{selection.genre[0]}</p>
             </div>
-        )
-    })
+        </li>
+    )
 }
 
 const SearchResult = ({ id, selections }) => (
     <div id={id}>
-        {generateResult(selections)}
+        <ul>
+            {selections.map(generateResult)}
+        </ul>
     </div>
 )
 
