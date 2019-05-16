@@ -12,9 +12,9 @@ class AppContainer extends Component {
         super()
         this.state = {
             playlists: [],
-            selection: [],
-            name: '',
-            buttonUsed: false,
+            selections: [],
+            searchInputValue: '',
+            searchBtnPressed: false,
             showSearchResult: false
         }
         this.search = this.search.bind(this)
@@ -26,16 +26,16 @@ class AppContainer extends Component {
         if (event.charCode === KEY_ENTER) {
             discog.search(event.target.value, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
-                this.setState({ selection: data.results })
+                this.setState({ selections: data.results })
             })
             event.target.value = ''
-        } else if (this.state.buttonUsed) {
+        } else if (this.state.searchBtnPressed) {
             event.preventDefault()
-            discog.search(this.state.name, { type: 'master', per_page: 5 }, (err, data) => {
+            discog.search(this.state.searchInputValue, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
-                this.setState({ selection: data.results })
+                this.setState({ selections: data.results })
             })
-            this.setState({ buttonUsed: false })
+            this.setState({ searchBtnPressed: false })
         }
     }
 
@@ -49,8 +49,8 @@ class AppContainer extends Component {
 
     handleChange (event) {
         this.setState({
-            name: event.target.value,
-            buttonUsed: true
+            searchInputValue: event.target.value,
+            searchBtnPressed: true
         })
         this.search(event)
     }
@@ -77,7 +77,7 @@ class AppContainer extends Component {
                 />
                 <SearchResult
                     id='searchresult_id'
-                    selections={this.state.selection}
+                    selections={this.state.selections}
                 />
             </div>
 
