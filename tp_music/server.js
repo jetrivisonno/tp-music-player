@@ -14,9 +14,11 @@ const CONTENT_TYPE_JSON = 'application/json'
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.get('/', function (request, response) {
+app.get('/api/playlists', function (request, response) {
+    console.log(request.headers)
     playlist.getPlaylists(function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
+        // response.header({ 'Access-Control-Allow-Origin': 'http://localhost:8081' })
         response.end(JSON.stringify(result.rows))
     })
 })

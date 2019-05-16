@@ -10,7 +10,7 @@ class AppContainer extends Component {
     constructor () {
         super()
         this.state = {
-            playlist: [],
+            playlists: [],
             selection: []
         }
         this.search = this.search.bind(this)
@@ -28,11 +28,10 @@ class AppContainer extends Component {
     }
 
     getPlaylists () {
-        fetch('localhost:8080/api/playlists', { method: 'GET' })
-            .then(response => console.log(response))
+        fetch('http://localhost:8080/api/playlists', { method: 'GET' })
             .then(response => response.json())
             .then(response => {
-                this.setState({ playlist: response })
+                this.setState({ playlists: response })
             })
     }
 
@@ -48,7 +47,7 @@ class AppContainer extends Component {
                 <PlaylistBar
                     id='playlistbar_id'
                     name='playlistbar'
-                    options={this.state.playlist}
+                    options={this.state.playlists}
                 />
             </div>
         )
