@@ -39,7 +39,7 @@ class AppContainer extends Component {
         fetch('http://localhost:8080/apis/playlists', { method: 'GET' })
             .then(response => response.json())
             .then(response => {
-                this.setState({ playlist: response })
+                this.setState({ playlists: response })
             })
     }
 
@@ -68,7 +68,7 @@ class AppContainer extends Component {
                 <PlaylistBar
                     id='playlistbar_id'
                     name='playlistbar'
-                    options={this.state.playlist}
+                    options={this.state.playlists}
                 />
 
             </div>
