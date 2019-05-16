@@ -29,11 +29,9 @@ class AppContainer extends Component {
             event.target.value = ''
         } else {
             event.preventDefault()
-            console.log(this.state.name)
             discog.search(this.state.name, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
                 this.setState({ selection: data.results })
-                console.log(this.state.selection)
             })
         }
     }
