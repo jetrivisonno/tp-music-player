@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
 import SearchResult from '../component/search-result'
+import '../css/main.css'
 
 const discog = require('../service/discogs')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
