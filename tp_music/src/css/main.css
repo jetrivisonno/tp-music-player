@@ -9,7 +9,6 @@ body {
     font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
     width: 100vw;
-    background-color: red;
 }
 
 #searchresult_id > ul {
@@ -31,9 +30,33 @@ body {
     height: 150px;
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 
 #searchresult_id > ul > li > div {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+}
+
+#searchresult_id > ul > li > div > h3:first-child {
+    text-align: center;
+}
+
+#searchresult_id > ul > li > div > div > p {
+    display: inline-block;
+    font-size: 0.7rem;
+}
+
+#searchresult_id > ul > li > div > div {
+    text-align: center;
+}
+
+#searchresult_id > ul > li > div > div > p::after {
+    content: ',  ';
+}
+
+#searchresult_id > ul > li > div > div > p:last-child::after {
+    content: none;
 }

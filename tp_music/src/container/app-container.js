@@ -20,6 +20,7 @@ class AppContainer extends Component {
             showSearchResult: false
         }
         this.search = this.search.bind(this)
+        this.searchMaster = this.searchMaster.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
@@ -39,6 +40,13 @@ class AppContainer extends Component {
             })
             this.setState({ searchBtnPressed: false })
         }
+    }
+
+    searchMaster (masterId) {
+        discog.searchMaster(masterId, function (err, master) {
+            if (err) throw err
+            console.log(master)
+        })
     }
 
     getPlaylists () {
@@ -77,7 +85,6 @@ class AppContainer extends Component {
                     name='playlistbar'
                     options={this.state.playlists}
                 />
-                {console.log(this.state.selections)}
                 <SearchResult
                     id='searchresult_id'
                     selections={this.state.selections}

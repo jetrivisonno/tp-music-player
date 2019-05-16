@@ -5,8 +5,8 @@ const search = function (input, pagination, callback) {
     return dis.database().search(input, pagination, callback)
 }
 
-const getMaster = function (masterId, callback) {
-    dis.database().getMaster(masterId, callback)
+const searchMaster = function (masterId, callback) {
+    return dis.database().getMaster(masterId, callback)
 }
 
 // dis.database().getMaster(106350, function (err, master) {
@@ -16,5 +16,5 @@ const getMaster = function (masterId, callback) {
 
 module.exports = {
     search: search,
-    getMaster: getMaster
+    searchMaster: searchMaster
 }
