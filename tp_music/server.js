@@ -18,7 +18,6 @@ app.use(cors())
 
 app.get('/apis/playlists', function (request, response) {
     playlist.getPlaylists(function (result) {
-        // response.writeHead('Access-Control-Allow-Origin', '*')
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
         console.log(result.rows)

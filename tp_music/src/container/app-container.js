@@ -40,7 +40,6 @@ class AppContainer extends Component {
 
     getPlaylists () {
         fetch('http://localhost:8080/apis/playlists', { method: 'GET' })
-            .then(response => JSON.parse(response))
             .then(response => response.json())
             .then(response => {
                 this.setState({ playlist: response })
@@ -54,7 +53,10 @@ class AppContainer extends Component {
     }
 
     render () {
-        this.getPlaylists()
+        if (this.state.playlist.length === 0) {
+            this.getPlaylists()
+        }
+
         return (
             <div>
                 <SearchBar
