@@ -10,7 +10,7 @@ class DetailContainer extends Component {
 
     componentDidMount () {
         this.setState({
-            master_id: true
+            master_id: 12000
         })
     }
 

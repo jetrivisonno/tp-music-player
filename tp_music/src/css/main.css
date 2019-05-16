@@ -15,10 +15,25 @@ body {
 #searchresult_id > ul {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center
 }
 
 #searchresult_id > ul > li {
     height: 150px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+#searchresult_id > ul > li > img {
+    width: 25%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+}
+
+#searchresult_id > ul > li > div {
+    display: flex;
+    flex-direction: column;
 }
