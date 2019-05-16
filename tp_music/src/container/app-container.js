@@ -61,12 +61,6 @@ class AppContainer extends Component {
         }
     }
 
-    componentDidUpdate () {
-        if (this.state.showSearchResult) {
-            this.render()
-        }
-    }
-
     render () {
         return (
             <div>
