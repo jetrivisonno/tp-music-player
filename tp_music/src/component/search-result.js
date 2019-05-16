@@ -1,9 +1,9 @@
 import React from 'react'
 
 function generateResult (selections) {
-    selections.map(function (selection) {
+    selections.map(function (selection, index) {
         return (
-            <div>
+            <div key={index}>
                 <img src={selection.cover_image} />
                 <div>
                     <h3>{selection.title}</h3>
