@@ -2,19 +2,22 @@ import React, { Component } from 'react'
 
 import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
+import ButtonBar from 'component/button-bar'
 
 const discog = require('../service/discogs')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
-
 class AppContainer extends Component {
     constructor () {
         super()
         this.state = {
             playlist: [],
-            selection: []
+            selection: [],
+            name: ''
         }
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleIn = this.handleChange.bind(this)
     }
 
     search (event) {
@@ -24,14 +27,30 @@ class AppContainer extends Component {
                 this.setState({ selection: data.results })
             })
             event.target.value = ''
+        } else {
+            event.preventDefault()
+            console.log(this.state.name)
+            discog.search(this.state.name, { type: 'master', per_page: 5 }, (err, data) => {
+                if (err) throw err
+                this.setState({ selection: data.results })
+                console.log(this.state.selection)
+            })
         }
     }
 
     getPlaylists () {
-        fetch('http://localhost:8080/playlists', { method: 'GET' })
+        fetch('localhost:8080/api/playlists', { method: 'GET' })
+            .then(response => console.log(response))
+            .then(response => response.json())
             .then(response => {
                 this.setState({ playlist: response })
             })
+    }
+
+    handleChange (event) {
+        this.setState({
+            name: event.target.value
+        })
     }
 
     render () {
@@ -41,14 +60,22 @@ class AppContainer extends Component {
                 <SearchBar
                     id='searchbar_id'
                     name='searchbar'
-                    method={this.search}
+                    value={this.state.value}
+                    onChange={this.handleChange}
                 />
+                <ButtonBar
+                    type='button'
+                    onClick={this.search}
+                />
+
                 <PlaylistBar
                     id='playlistbar_id'
                     name='playlistbar'
                     options={this.state.playlist}
                 />
+
             </div>
+
         )
     }
 }
