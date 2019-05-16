@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
 import SearchResult from '../component/search-result'
+// import DetailContainer from '../detail-container'
 
 import '../css/main.css'
 
