@@ -15,10 +15,13 @@ const CONTENT_TYPE_JSON = 'application/json'
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
-    playlist.getPlaylists()
-    res.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
-    res.end()
+app.get('/playlists', (req, res) => {
+    console.log('hello')
+    playlist.getPlaylists(function (result) {
+        const data = JSON.stringify(result)
+        res.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
+        res.end(data)
+    })
 })
 
 app.listen(PORT, () => {

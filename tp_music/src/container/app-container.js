@@ -28,15 +28,14 @@ class AppContainer extends Component {
     }
 
     getPlaylists () {
-        fetch('/api/playlist', { method: 'GET' })
-            .then(response => console.log(response))
-            .then(response => response.json())
+        fetch('http://localhost:8080/playlists', { method: 'GET' })
             .then(response => {
                 this.setState({ playlist: response })
             })
     }
 
     render () {
+        this.getPlaylists()
         return (
             <div>
                 <SearchBar
