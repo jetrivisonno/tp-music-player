@@ -25,6 +25,7 @@ class AppContainer extends Component {
             discog.search(event.target.value, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
                 this.setState({ selection: data.results })
+                console.log(this.state.selection)
             })
             event.target.value = ''
         } else if (this.state.buttonUsed) {
