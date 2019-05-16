@@ -49,10 +49,16 @@ class AppContainer extends Component {
         })
     }
 
-    render () {
+    componentDidMount () {
         if (this.state.playlist.length === 0) {
             this.getPlaylists()
         }
+    }
+
+    render () {
+        // if (this.state.playlist.length === 0) {
+        //     this.getPlaylists()
+        // }
 
         return (
             <div>
