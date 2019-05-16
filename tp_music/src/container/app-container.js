@@ -6,6 +6,7 @@ import ButtonBar from 'component/button-bar'
 
 const discog = require('../service/discogs')
 const KEY_ENTER = 13 // in the ascii table, 13 is the carriage return key
+
 class AppContainer extends Component {
     constructor () {
         super()
@@ -17,7 +18,6 @@ class AppContainer extends Component {
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleIn = this.handleChange.bind(this)
     }
 
     search (event) {
@@ -25,6 +25,7 @@ class AppContainer extends Component {
             discog.search(event.target.value, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
                 this.setState({ selection: data.results })
+                console.log(data.results)
             })
             event.target.value = ''
         } else {
@@ -62,6 +63,7 @@ class AppContainer extends Component {
                     name='searchbar'
                     value={this.state.value}
                     onChange={this.handleChange}
+                    method={this.search}
                 />
                 <ButtonBar
                     type='button'
