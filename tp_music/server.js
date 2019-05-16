@@ -25,7 +25,6 @@ app.use(cors())
 app.get('/apis/playlists', function (request, response) {
     playlist.getPlaylists(function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
-        console.log(JSON.stringify(result.rows))
         response.end(JSON.stringify(result.rows))
     })
 })

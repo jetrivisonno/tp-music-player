@@ -10,7 +10,7 @@ class AppContainer extends Component {
     constructor () {
         super()
         this.state = {
-            playlist: [],
+            playlists: [],
             selection: [],
             name: ''
         }
@@ -50,16 +50,12 @@ class AppContainer extends Component {
     }
 
     componentDidMount () {
-        if (this.state.playlist.length === 0) {
+        if (this.state.playlists.length === 0) {
             this.getPlaylists()
         }
     }
 
     render () {
-        // if (this.state.playlist.length === 0) {
-        //     this.getPlaylists()
-        // }
-
         return (
             <div>
                 <SearchBar
