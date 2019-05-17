@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
 import SearchResult from '../component/search-result'
+import DetailContainer from 'container/detail-container'
 
-// import DetailContainer from '../detail-container'
 import '../css/main.css'
 
 const discog = require('../service/discogs')
@@ -18,36 +18,47 @@ class AppContainer extends Component {
             selections: [],
             searchInputValue: '',
             searchBtnPressed: false,
-            showSearchResult: false
+            showSearchResult: false,
+            showDetailContainer: false,
+            masterId: ''
         }
         this.search = this.search.bind(this)
-        this.searchMaster = this.searchMaster.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.getMasterId = this.getMasterId.bind(this)
     }
 
     search (event) {
         if (event.charCode === KEY_ENTER) {
             discog.search(event.target.value, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
-                this.setState({ selections: data.results })
+                this.setState({
+                    selections: data.results,
+                    showSearchResult: true
+                })
             })
             event.target.value = ''
         } else if (this.state.searchBtnPressed) {
             event.preventDefault()
             discog.search(this.state.searchInputValue, { type: 'master', per_page: 5 }, (err, data) => {
                 if (err) throw err
-                this.setState({ selections: data.results })
+                this.setState({
+                    selections: data.results,
+                    showSearchResult: true
+                })
             })
-            this.setState({ searchBtnPressed: false })
+            this.setState({ searchBtnPressed: false
+            })
         }
     }
 
-    searchMaster (masterId) {
-        discog.searchMaster(masterId, function (err, master) {
-            if (err) throw err
-            console.log(master)
+    getMasterId (event) {
+        this.setState({
+            masterId: event.target.value,
+            showSearchResult: false,
+            showDetailContainer: true
         })
+        console.log(event.target.value)
     }
 
     getPlaylists () {
@@ -86,10 +97,16 @@ class AppContainer extends Component {
                     name='playlistbar'
                     options={this.state.playlists}
                 />
-                <SearchResult
-                    id='searchresult_id'
-                    selections={this.state.selections}
-                />
+                {this.state.showSearchResult
+                    ? <SearchResult
+                        id='searchresult_id'
+                        selections={this.state.selections}
+                        getMasterId={this.getMasterId}
+                    /> : null}
+                {this.state.showDetailContainer
+                    ? <DetailContainer
+                        masterId={this.state.masterId}
+                    /> : null}
             </div>
 
         )

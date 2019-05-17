@@ -1,32 +1,32 @@
 import React from 'react'
 
-function generateResult (selection, index) {
+const generateResult = function (selection, index, getMasterId) {
     return (
         <li key={index}>
             <img src={selection.cover_image} />
             <div>
                 <h3>{selection.title}</h3>
                 <div>
-                    {selection.genre.map(generateGenres)}
+                    {selection.genre.map((result, index) => generateGenres(result, index))}
                 </div>
                 <div>
-                    <a href={'#'}>listen to album</a>
+                    <button type='button' onClick={getMasterId} value={selection.master_id}>listen to album</button>
                 </div>
             </div>
         </li>
     )
 }
 
-function generateGenres (genre) {
+function generateGenres (genre, index) {
     return (
-        <p>{genre}</p>
+        <p key={index}>{genre}</p>
     )
 }
 
-const SearchResult = ({ id, selections, searchMaster }) => (
+const SearchResult = ({ id, selections, getMasterId }) => (
     <div id={id}>
         <ul>
-            {selections.map(generateResult)}
+            {selections.map((selection, index) => generateResult(selection, index, getMasterId))}
         </ul>
     </div>
 )
