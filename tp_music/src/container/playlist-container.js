@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import PlaylistComponent from '../component/playlist-component'
+import Youtube from 'react-youtube'
 
 class PlaylistContainer extends Component {
     constructor (props) {
@@ -24,8 +25,20 @@ class PlaylistContainer extends Component {
     }
 
     render () {
+        const opts = {
+            height: '390',
+            width: '640',
+            playerVars: { // https://developers.google.com/youtube/player_parameters
+                autoplay: 1
+            }
+        }
         return (
             <div>
+                <YouTube
+                    videoId={this.state.videoList[this.state.counter].uri.substr(32)} // defaults -> null
+                    opts={opts}
+                    onEnd={this.playNext}
+                />
                 {this.state.list !== null ? <PlaylistComponent list={this.state.list} /> : null}
             </div>
         )
