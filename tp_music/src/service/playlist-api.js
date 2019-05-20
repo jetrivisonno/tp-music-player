@@ -16,7 +16,16 @@ function getPlaylistById (id, callback) {
     })
 }
 
+function addToPlaylist (playlistId, track, callback) { // track is object with master_id, uri and title
+    db.connect()
+    db.query('INSERT INTO track (playlist_id, title, uri, master_id) VALUES (:playlist_id, :title, :uri, :master_id);', [playlistId, track.title, track.uri, track.master_id], (result) => {
+        callback(result)
+        db.disconnect()
+    })
+}
+
 module.exports = {
     getPlaylists: getPlaylists,
-    getPlaylistById: getPlaylistById
+    getPlaylistById: getPlaylistById,
+    addToPlaylist: addToPlaylist
 }

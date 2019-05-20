@@ -34,7 +34,11 @@ app.get('/apis/playlists/:id', function (request, response) {
 })
 
 app.post('/api/playlists', function (request, response) {
-    //
+    const { playlistId, title, uri, master_id } = request.body
+    playlist.addToPlaylist(playlistId, { title, uri, master_id }, function (result) {
+        response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
+        response.end(JSON.stringify(result.rows))
+    })
 })
 
 app.listen(PORT, () => {
