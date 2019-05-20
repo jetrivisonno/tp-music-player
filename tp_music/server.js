@@ -26,6 +26,17 @@ app.get('/apis/playlists', function (request, response) {
     })
 })
 
+app.get('/apis/playlists/:id', function (request, response) {
+    playlist.getPlaylistById(function (result) {
+        response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
+        response.end(JSON.stringify(result.rows))
+    })
+})
+
+app.post('/api/playlists', function (request, response) {
+    //
+})
+
 app.listen(PORT, () => {
     console.log('Listening on http://localhost:%s', PORT)
 })

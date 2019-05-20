@@ -8,6 +8,15 @@ function getPlaylists (callback) {
     })
 }
 
+function getPlaylistById (id, callback) {
+    db.connect()
+    db.query('SELECT * FROM track where playlist_id=:id;', [id], (result) => {
+        callback(result)
+        db.disconnect()
+    })
+}
+
 module.exports = {
-    getPlaylists: getPlaylists
+    getPlaylists: getPlaylists,
+    getPlaylistById: getPlaylistById
 }

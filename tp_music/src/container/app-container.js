@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import SearchBar from 'component/search-bar'
 import PlaylistBar from '../component/playlist-bar'
+import PlaylistContainer from '../container/playlist-container'
 import SearchResult from '../component/search-result'
 import DetailContainer from 'container/detail-container'
 
@@ -95,6 +96,8 @@ class AppContainer extends Component {
                     id='playlistbar_id'
                     name='playlistbar'
                     options={this.state.playlists}
+                />
+                <PlaylistContainer
                 />
                 {this.state.showSearchResult
                     ? <SearchResult
