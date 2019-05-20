@@ -12,7 +12,7 @@ class DetailContainer extends Component {
         // this.props = props
 
         this.state = {
-            displayDetailComponent: false,
+            showDetailComponent: false,
             videoList: [],
             showVideo: false,
             counter: 0,
@@ -26,12 +26,10 @@ class DetailContainer extends Component {
     }
 
     componentDidMount () {
-        if (this.state.masterId !== this.props.masterId) {
-            this.setState({
-                masterId: parseInt(this.props.masterId)
-            })
-        }
         this.searchMaster(this.props.masterId)
+        this.setState({
+            showDetailComponent: true
+        })
     }
 
     searchMaster (masterId) {
@@ -96,11 +94,11 @@ class DetailContainer extends Component {
                         <button type='button' onClick={this.playNext}>Next</button>
                     </div>
                 </div>
-                {this.state.masterId === parseInt(this.props.masterId)
+                {this.state.showDetailComponent
                     ? <DetailResultVideo
                         videos={this.state.videoList}
                         addSong={this.addSong}
-                        masterId={this.state.masterId}
+                        masterId={this.props.masterId}
                     /> : null}
             </div>
         )
