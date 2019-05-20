@@ -124,7 +124,7 @@ class AppContainer extends Component {
                 {this.state.showDetailContainer
                     ? <DetailContainer
                         masterId={this.state.masterId}
-                        selectedPlaylist={this.selectedPlaylist}
+                        selectedPlaylist={this.state.selectedPlaylist}
                     /> : null}
             </div>
 
