@@ -19,15 +19,16 @@ app.use(function (request, response, next) {
     next()
 })
 
-app.get('/apis/playlists', function (request, response) {
+app.get('/api/playlists', function (request, response) {
     playlist.getPlaylists(function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
     })
 })
 
-app.get('/apis/playlists/:id', function (request, response) {
-    playlist.getPlaylistById(function (result) {
+app.get('/api/playlists/:id', function (request, response) {
+    const id = parseInt(request.params.id)
+    playlist.getPlaylistById(id, function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
     })
