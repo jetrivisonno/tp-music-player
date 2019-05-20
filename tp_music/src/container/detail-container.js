@@ -55,7 +55,10 @@ class DetailContainer extends Component {
     }
 
     addSong (track) {
-        fetch('http://localhost:8080/api/playlists', { method: 'POST', body: JSON.stringify({ playlistId: this.props.selectedPlaylist, track: track }) })
+        fetch('http://localhost:8080/api/playlists',
+            { method: 'POST',
+                body: JSON.stringify({ playlistId: this.props.selectedPlaylist, track: track }),
+                headers: { 'Content-Type': 'application/json' } })
             .then(response => response.json())
             .then(response => console.log(response))
     }
@@ -68,6 +71,8 @@ class DetailContainer extends Component {
                 autoplay: 1
             }
         }
+
+        console.log(this.props.masterId)
 
         return (
 
@@ -87,6 +92,7 @@ class DetailContainer extends Component {
                 <DetailResultVideo
                     videos={this.state.videoList}
                     addSong={this.addSong}
+                    masterId={this.props.masterId}
                 />
             </div>
         )
