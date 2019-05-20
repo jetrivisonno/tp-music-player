@@ -23,13 +23,16 @@ class AppContainer extends Component {
             showDetailContainer: false,
             showPlaylist: false,
             masterId: '',
-            selectedPlaylist: 1
+            selectedPlaylist: 1,
+            list: null,
+            playlistSelectLoaded: false
         }
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.getMasterId = this.getMasterId.bind(this)
         this.onSelectChange = this.onSelectChange.bind(this)
+        this.getPlaylistById = this.getPlaylistById.bind(this)
     }
 
     search (event) {
@@ -38,21 +41,11 @@ class AppContainer extends Component {
                 if (err) throw err
                 this.setState({
                     selections: data.results,
-                    showSearchResult: true
+                    showSearchResult: true,
+                    showPlaylist: false
                 })
             })
             event.target.value = ''
-        } else if (this.state.searchBtnPressed) {
-            event.preventDefault()
-            discog.search(this.state.searchInputValue, { type: 'master', per_page: 5 }, (err, data) => {
-                if (err) throw err
-                this.setState({
-                    selections: data.results,
-                    showSearchResult: true
-                })
-            })
-            this.setState({ searchBtnPressed: false
-            })
         }
     }
 
@@ -69,7 +62,10 @@ class AppContainer extends Component {
         fetch('http://localhost:8080/api/playlists', { method: 'GET' })
             .then(response => response.json())
             .then(response => {
-                this.setState({ playlists: response })
+                this.setState({
+                    playlists: response,
+                    playlistSelectLoaded: true
+                })
             })
     }
 
@@ -85,6 +81,18 @@ class AppContainer extends Component {
         this.setState({
             selectedPlaylist: event.target.value + 1
         })
+    }
+
+    getPlaylistById (id) {
+        if (this.state.playlistSelectLoaded) {
+            fetch('http://localhost:8080/api/playlists/' + id, { method: 'GET' })
+                .then(response => response.json())
+                .then(response => this.setState({
+                    list: response,
+                    showPlaylist: true,
+                    showSearchResult: false
+                }))
+        }
     }
 
     componentDidMount () {
@@ -110,11 +118,15 @@ class AppContainer extends Component {
                     name='playlistbar'
                     options={this.state.playlists}
                     onSelectChange={this.onSelectChange}
+                    getPlaylistById={this.getPlaylistById}
+                    selectedPlaylist={this.state.selectedPlaylist}
                 />
-                {/* this.state.showPlaylist
+                {this.state.showPlaylist && this.state.playlistSelectLoaded
                     ? <PlaylistContainer
                         selectedPlaylist={this.state.selectedPlaylist}
-                /> : null */}
+                        list={this.state.list}
+                        getPlaylistById={this.getPlaylistById}
+                    /> : null}
                 {this.state.showSearchResult
                     ? <SearchResult
                         id='searchresult_id'

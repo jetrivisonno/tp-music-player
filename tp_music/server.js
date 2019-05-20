@@ -28,9 +28,7 @@ app.get('/api/playlists', function (request, response) {
 
 app.get('/api/playlists/:id', function (request, response) {
     const id = parseInt(request.params.id)
-    console.log(id)
     playlist.getPlaylistById(id, function (result) {
-        console.log(result)
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
     })
@@ -38,7 +36,6 @@ app.get('/api/playlists/:id', function (request, response) {
 
 app.post('/api/playlists', function (request, response) {
     const { playlistId, track } = request.body
-    console.log(track)
     playlist.addToPlaylist(playlistId, track, function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))

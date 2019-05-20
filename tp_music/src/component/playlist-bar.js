@@ -8,10 +8,13 @@ function generateOptions (datas) {
     })
 }
 
-const PlaylistBar = ({ id, name, options, onSelectChange }) => (
-    <select id={id} name={name} onChange={onSelectChange}>
-        {generateOptions(options)}
-    </select>
+const PlaylistBar = ({ id, name, options, onSelectChange, getPlaylistById, selectedPlaylist }) => (
+    <div>
+        <button type='button' onClick={() => getPlaylistById(selectedPlaylist)}>Playlist</button>
+        <select id={id} name={name} onChange={onSelectChange}>
+            {generateOptions(options)}
+        </select>
+    </div>
 )
 
 export default PlaylistBar
