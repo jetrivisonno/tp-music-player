@@ -10,7 +10,7 @@ function getPlaylists (callback) {
 
 function getPlaylistById (id, callback) {
     db.connect()
-    db.query('SELECT * FROM track where playlist_id=:id;', [id], (result) => {
+    db.query('SELECT * FROM track where playlist_id=$1;', [id], (result) => {
         callback(result)
         db.disconnect()
     })
