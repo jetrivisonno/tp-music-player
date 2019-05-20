@@ -37,7 +37,8 @@ app.get('/api/playlists/:id', function (request, response) {
 })
 
 app.post('/api/playlists', function (request, response) {
-    const { playlistId, track } = request.body
+    const playlistId = request.body.playlistId
+    const track = request.body.track
     console.log(track)
     console.log(playlistId)
     playlist.addToPlaylist(playlistId, track, function (result) {
