@@ -54,8 +54,8 @@ class DetailContainer extends Component {
         }
     }
 
-    addSong () {
-        fetch('http://localhost:8080/api/playlists', { method: 'POST', body: JSON.stringify(this.props.selectedPlaylist, { title: 'hello', uri: 'hhhh', masterId: 'hhhh' }) })
+    addSong (track) {
+        fetch('http://localhost:8080/api/playlists', { method: 'POST', body: { playlistId: this.props.selectedPlaylist, track: track } })
             .then(response => response.json())
             .then(response => console.log(response))
     }

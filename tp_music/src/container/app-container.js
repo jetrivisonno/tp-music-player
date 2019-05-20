@@ -111,10 +111,10 @@ class AppContainer extends Component {
                     options={this.state.playlists}
                     onSelectChange={this.onSelectChange}
                 />
-                {this.state.showPlaylist
+                {/* this.state.showPlaylist
                     ? <PlaylistContainer
                         selectedPlaylist={this.state.selectedPlaylist}
-                    /> : null }
+                /> : null */}
                 {this.state.showSearchResult
                     ? <SearchResult
                         id='searchresult_id'

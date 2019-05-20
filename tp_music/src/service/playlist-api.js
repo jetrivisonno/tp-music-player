@@ -18,7 +18,7 @@ function getPlaylistById (id, callback) {
 
 function addToPlaylist (playlistId, track, callback) { // track is object with master_id, uri and title
     db.connect()
-    db.query('INSERT INTO track (playlist_id, title, uri, master_id) VALUES ($1, $2, $3, $4);', [playlistId, track.title, track.uri, track.master_id], (result) => {
+    db.query('INSERT INTO track (playlist_id, title, uri, master_id) VALUES ($1, $2, $3, $4);', [playlistId, track.title, track.uri, track.masterId], (result) => {
         callback(result)
         db.disconnect()
     })
