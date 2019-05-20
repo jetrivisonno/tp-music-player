@@ -58,7 +58,8 @@ class DetailContainer extends Component {
         fetch('http://localhost:8080/api/playlists',
             { method: 'POST',
                 body: JSON.stringify({ playlistId: this.props.selectedPlaylist, track: track }),
-                headers: { 'Content-Type': 'application/json' } })
+                headers: { 'Content-Type': 'application/json' }
+            })
             .then(response => response.json())
             .then(response => console.log(response))
     }

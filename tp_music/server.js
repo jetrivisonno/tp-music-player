@@ -37,14 +37,7 @@ app.get('/api/playlists/:id', function (request, response) {
 })
 
 app.post('/api/playlists', function (request, response) {
-<<<<<<< HEAD
-    const playlistId = request.body.playlistId
-    const track = request.body.track
-    console.log(track)
-    console.log(playlistId)
-=======
     const { playlistId, track } = request.body
->>>>>>> 28c0aec229ac1b3deeac382d1bdf998dea9de274
     playlist.addToPlaylist(playlistId, track, function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
