@@ -12,6 +12,7 @@ const trackListDisplay = (video, index) => (
     <li key={index}>
         <p>{video.title}</p>
         <p>{video.uri}</p>
+        <button type='button'>Add</button>
     </li>
 )
 
