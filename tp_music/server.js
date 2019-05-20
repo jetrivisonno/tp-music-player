@@ -27,7 +27,8 @@ app.get('/api/playlists', function (request, response) {
 })
 
 app.get('/api/playlists/:id', function (request, response) {
-    playlist.getPlaylistById(function (result) {
+    const id = parseInt(request.params.id)
+    playlist.getPlaylistById(id, function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
     })

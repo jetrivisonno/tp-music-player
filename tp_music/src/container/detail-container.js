@@ -21,6 +21,7 @@ class DetailContainer extends Component {
         this.searchMaster = this.searchMaster.bind(this)
         this.playNext = this.playNext.bind(this)
         this.playPrevious = this.playPrevious.bind(this)
+        this.addSong = this.addSong.bind(this)
     }
 
     componentDidMount () {
@@ -53,6 +54,12 @@ class DetailContainer extends Component {
         }
     }
 
+    addSong () {
+        fetch('http://localhost:8080/api/playlists/:id', { method: 'POST', body: JSON.stringify(this.props.selectedPlaylist, { title: 'hello', uri: 'hhhh', masterId: 'hhhh' }) })
+            .then(response => response.json())
+            .then(response => console.log(response))
+    }
+
     render () {
         const opts = {
             height: '390',
@@ -79,6 +86,7 @@ class DetailContainer extends Component {
                 </div>
                 <DetailResultVideo
                     videos={this.state.videoList}
+                    addSong={this.addSong}
                 />
             </div>
         )

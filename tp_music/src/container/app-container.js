@@ -23,7 +23,7 @@ class AppContainer extends Component {
             showDetailContainer: false,
             showPlaylist: false,
             masterId: '',
-            selectedPlaylist: null
+            selectedPlaylist: 1
         }
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
@@ -66,7 +66,7 @@ class AppContainer extends Component {
     }
 
     getPlaylists () {
-        fetch('http://localhost:8080/apis/playlists', { method: 'GET' })
+        fetch('http://localhost:8080/api/playlists', { method: 'GET' })
             .then(response => response.json())
             .then(response => {
                 this.setState({ playlists: response })
@@ -83,7 +83,7 @@ class AppContainer extends Component {
 
     onSelectChange (event) {
         this.setState({
-            selectedPlaylist: event.target.value
+            selectedPlaylist: event.target.value + 1
         })
     }
 
@@ -113,7 +113,7 @@ class AppContainer extends Component {
                 />
                 {this.state.showPlaylist
                     ? <PlaylistContainer
-                        playlistSelected={this.state.selectedPlaylist}
+                        selectedPlaylist={this.state.selectedPlaylist}
                     /> : null }
                 {this.state.showSearchResult
                     ? <SearchResult
@@ -124,6 +124,7 @@ class AppContainer extends Component {
                 {this.state.showDetailContainer
                     ? <DetailContainer
                         masterId={this.state.masterId}
+                        selectedPlaylist={this.selectedPlaylist}
                     /> : null}
             </div>
 
