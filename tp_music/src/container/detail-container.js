@@ -7,15 +7,16 @@ const discog = require('../service/discogs')
 
 class DetailContainer extends Component {
     constructor (props) {
-        super()
+        super(props)
 
-        this.props = props
+        // this.props = props
 
         this.state = {
             displayDetailComponent: false,
             videoList: [],
             showVideo: false,
-            counter: 0
+            counter: 0,
+            masterId: null
         }
 
         this.searchMaster = this.searchMaster.bind(this)
@@ -25,6 +26,11 @@ class DetailContainer extends Component {
     }
 
     componentDidMount () {
+        if (this.state.masterId !== this.props.masterId) {
+            this.setState({
+                masterId: parseInt(this.props.masterId)
+            })
+        }
         this.searchMaster(this.props.masterId)
     }
 
@@ -72,7 +78,7 @@ class DetailContainer extends Component {
             }
         }
 
-        console.log(this.props.masterId)
+        console.log(this.state.masterId)
 
         return (
 
@@ -89,11 +95,12 @@ class DetailContainer extends Component {
                         <button type='button' onClick={this.playNext}>Next</button>
                     </div>
                 </div>
-                <DetailResultVideo
-                    videos={this.state.videoList}
-                    addSong={this.addSong}
-                    masterId={this.props.masterId}
-                />
+                {this.state.masterId === parseInt(this.props.masterId)
+                    ? <DetailResultVideo
+                        videos={this.state.videoList}
+                        addSong={this.addSong}
+                        masterId={this.state.masterId}
+                    /> : null}
             </div>
         )
     }
