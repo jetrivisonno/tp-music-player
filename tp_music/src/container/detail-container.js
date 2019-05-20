@@ -38,7 +38,6 @@ class DetailContainer extends Component {
     }
 
     playNext () {
-        console.log(this.state.videoList.length)
         if (this.state.counter < (this.state.videoList.length - 1)) {
             this.setState({
                 counter: this.state.counter + 1
@@ -71,6 +70,7 @@ class DetailContainer extends Component {
                         ? <YouTube
                             videoId={this.state.videoList[this.state.counter].uri.substr(32)} // defaults -> null
                             opts={opts}
+                            onEnd={this.playNext}
                         /> : <div />}
                     <div>
                         <button type='button' onClick={this.playPrevious}>Prev</button>

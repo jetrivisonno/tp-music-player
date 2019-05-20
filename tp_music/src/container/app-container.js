@@ -58,7 +58,6 @@ class AppContainer extends Component {
             showSearchResult: false,
             showDetailContainer: true
         })
-        console.log(event.target.value)
     }
 
     getPlaylists () {
