@@ -28,15 +28,17 @@ app.get('/api/playlists', function (request, response) {
 
 app.get('/api/playlists/:id', function (request, response) {
     const id = parseInt(request.params.id)
+    console.log(id)
     playlist.getPlaylistById(id, function (result) {
+        console.log(result)
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
     })
 })
 
 app.post('/api/playlists', function (request, response) {
-    const { playlistId, title, uri, masterId } = request.body
-    playlist.addToPlaylist(playlistId, { title, uri, masterId }, function (result) {
+    const { playlistId, track } = request.body
+    playlist.addToPlaylist(playlistId, track, function (result) {
         response.writeHead(HTTP_SUCCESS, { 'Content-Type': CONTENT_TYPE_JSON })
         response.end(JSON.stringify(result.rows))
     })
