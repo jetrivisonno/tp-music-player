@@ -8,8 +8,8 @@ function generateOptions (datas) {
     })
 }
 
-const PlaylistBar = ({ id, name, options }) => (
-    <select id={id} name={name}>
+const PlaylistBar = ({ id, name, options, onSelectChange }) => (
+    <select id={id} name={name} onChange={onSelectChange}>
         {generateOptions(options)}
     </select>
 )

@@ -21,12 +21,15 @@ class AppContainer extends Component {
             searchBtnPressed: false,
             showSearchResult: false,
             showDetailContainer: false,
-            masterId: ''
+            showPlaylist: false,
+            masterId: '',
+            selectedPlaylist: null
         }
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.getMasterId = this.getMasterId.bind(this)
+        this.onSelectChange = this.onSelectChange.bind(this)
     }
 
     search (event) {
@@ -57,7 +60,8 @@ class AppContainer extends Component {
         this.setState({
             masterId: event.target.value,
             showSearchResult: false,
-            showDetailContainer: true
+            showDetailContainer: true,
+            showPlaylist: false
         })
     }
 
@@ -77,10 +81,19 @@ class AppContainer extends Component {
         this.search(event)
     }
 
+    onSelectChange (event) {
+        this.setState({
+            selectedPlaylist: event.target.value
+        })
+    }
+
     componentDidMount () {
         if (this.state.playlists.length === 0) {
             this.getPlaylists()
         }
+        this.setState({
+            showPlaylist: true
+        })
     }
 
     render () {
@@ -96,9 +109,12 @@ class AppContainer extends Component {
                     id='playlistbar_id'
                     name='playlistbar'
                     options={this.state.playlists}
+                    onSelectChange={this.onSelectChange}
                 />
-                <PlaylistContainer
-                />
+                {this.state.showPlaylist
+                    ? <PlaylistContainer
+                        playlistSelected={this.state.selectedPlaylist}
+                    /> : null }
                 {this.state.showSearchResult
                     ? <SearchResult
                         id='searchresult_id'
