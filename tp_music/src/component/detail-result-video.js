@@ -17,7 +17,7 @@ const trackListDisplay = (video, index, addSong, masterId) => (
                 uri: video.uri,
                 masterId: masterId
             }
-        )}>Add</button>
+        )}>add to playlist</button>
     </li>
 )
 
