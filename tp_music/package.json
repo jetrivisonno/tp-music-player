@@ -41,7 +41,6 @@
     },
     "dependencies": {
         "body-parser": "^1.19.0",
-        "cors": "^2.8.5",
         "disconnect": "^1.2.1",
         "express": "^4.16.4",
         "pg": "^7.10.0",
