@@ -9,8 +9,6 @@ class DetailContainer extends Component {
     constructor (props) {
         super(props)
 
-        // this.props = props
-
         this.state = {
             showDetailComponent: false,
             videoList: [],
@@ -66,7 +64,6 @@ class DetailContainer extends Component {
                 headers: { 'Content-Type': 'application/json' }
             })
             .then(response => response.json())
-            .then(response => console.log(response))
     }
 
     render () {

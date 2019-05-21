@@ -9,11 +9,6 @@ const searchMaster = function (masterId, callback) {
     return dis.database().getMaster(masterId, callback)
 }
 
-// dis.database().getMaster(106350, function (err, master) {
-//     if (err) throw err
-//     console.log(master)
-// })
-
 module.exports = {
     search: search,
     searchMaster: searchMaster

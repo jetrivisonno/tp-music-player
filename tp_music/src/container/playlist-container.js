@@ -23,7 +23,6 @@ class PlaylistContainer extends Component {
                 list: response,
                 counter: 0
             }))
-            .then(console.log(this.state.list))
     }
 
     playNext () {
