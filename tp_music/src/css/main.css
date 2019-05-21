@@ -11,6 +11,67 @@ body {
     width: 100vw;
 }
 
+header {
+    padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #aaa;
+}
+
+#searchbar_id {
+    margin: 0 1rem;
+}
+
+#searchbar_id > input {
+    padding: 0 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    border: 1px solid #999;
+    border-radius: 6px;
+    outline: none;
+}
+
+#searchbar_id > input::placeholder {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+}
+
+#playlistbar_id {
+    margin: 0 1rem;
+}
+
+#playlistbar_id > button {
+    padding: 0.1rem 0.6rem;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+#playlistbar_id > select {
+    margin-left: 1rem;
+    height: 1.3rem;
+    border-radius: 6px;
+    outline: none;
+}
+
+/* main */
+
+main {
+    margin: 0 auto;
+    padding: 1rem;
+    padding-top: 2rem;
+    width: 80%;
+}
+
+#searchresult_id {
+    margin: 0 auto;
+    padding: 1rem;
+    width: 60%;
+}
+
 #searchresult_id > ul {
     width: 100%;
     display: flex;
@@ -19,18 +80,20 @@ body {
 }
 
 #searchresult_id > ul > li {
+    margin: 1rem 0;
+    padding: 0.2rem;
     height: 150px;
     display: flex;
     flex-direction: row;
+    border: 1px solid #bbb;
+    border-radius: 5px;
 
 }
 
 #searchresult_id > ul > li > img {
     width: 25%;
-    height: 150px;
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
+    height: 100%;
+    border-radius: 5px;
 }
 
 #searchresult_id > ul > li > div {
@@ -59,4 +122,10 @@ body {
 
 #searchresult_id > ul > li > div > div > p:last-child::after {
     content: none;
+}
+
+#searchresult_id > ul > li > div > div > button {
+    padding: 0.3rem;
+    text-transform: capitalize;
+    cursor: pointer;
 }

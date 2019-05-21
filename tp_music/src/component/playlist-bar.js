@@ -9,9 +9,9 @@ function generateOptions (datas) {
 }
 
 const PlaylistBar = ({ id, name, options, onSelectChange, activatePlaylist, selectedPlaylist }) => (
-    <div>
+    <div id={id}>
         <button type='button' onClick={activatePlaylist}>Playlist</button>
-        <select id={id} name={name} onChange={onSelectChange}>
+        <select name={name} onChange={onSelectChange}>
             {generateOptions(options)}
         </select>
     </div>

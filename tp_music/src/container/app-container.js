@@ -92,37 +92,40 @@ class AppContainer extends Component {
     render () {
         return (
             <div>
-                <SearchBar
-                    id='searchbar_id'
-                    name='searchbar'
-                    methodSearch={this.search}
-                    methodSubmit={this.handleChange}
-                />
-                <PlaylistBar
-                    id='playlistbar_id'
-                    name='playlistbar'
-                    options={this.state.playlists}
-                    onSelectChange={this.onSelectChange}
-                    activatePlaylist={this.activatePlaylist}
-                    selectedPlaylist={this.state.selectedPlaylist}
-                />
-                {this.state.showPlaylist && this.state.playlistSelectLoaded
-                    ? <PlaylistContainer
+                <header>
+                    <SearchBar
+                        id='searchbar_id'
+                        name='searchbar'
+                        methodSearch={this.search}
+                    />
+                    <PlaylistBar
+                        id='playlistbar_id'
+                        name='playlistbar'
+                        options={this.state.playlists}
+                        onSelectChange={this.onSelectChange}
+                        activatePlaylist={this.activatePlaylist}
                         selectedPlaylist={this.state.selectedPlaylist}
-                        list={this.state.list}
-                        getPlaylistById={this.getPlaylistById}
-                    /> : null}
-                {this.state.showSearchResult
-                    ? <SearchResult
-                        id='searchresult_id'
-                        selections={this.state.selections}
-                        getMasterId={this.getMasterId}
-                    /> : null}
-                {this.state.showDetailContainer
-                    ? <DetailContainer
-                        masterId={this.state.masterId}
-                        selectedPlaylist={this.state.selectedPlaylist}
-                    /> : null}
+                    />
+                </header>
+                <main>
+                    {this.state.showPlaylist && this.state.playlistSelectLoaded
+                        ? <PlaylistContainer
+                            selectedPlaylist={this.state.selectedPlaylist}
+                            list={this.state.list}
+                            getPlaylistById={this.getPlaylistById}
+                        /> : null}
+                    {this.state.showSearchResult
+                        ? <SearchResult
+                            id='searchresult_id'
+                            selections={this.state.selections}
+                            getMasterId={this.getMasterId}
+                        /> : null}
+                    {this.state.showDetailContainer
+                        ? <DetailContainer
+                            masterId={this.state.masterId}
+                            selectedPlaylist={this.state.selectedPlaylist}
+                        /> : null}
+                </main>
             </div>
 
         )
