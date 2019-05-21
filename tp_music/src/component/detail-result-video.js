@@ -11,7 +11,6 @@ const DetailResultVideo = ({ videos, addSong, masterId }) => (
 const trackListDisplay = (video, index, addSong, masterId) => (
     <li key={index}>
         <h3>{video.title}</h3>
-        <p>{video.uri}</p>
         <button type='button' onClick={() => addSong(
             {
                 title: video.title,
