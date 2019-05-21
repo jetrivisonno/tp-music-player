@@ -17,19 +17,15 @@ class AppContainer extends Component {
         this.state = {
             playlists: [],
             selections: [],
-            searchInputValue: '',
-            searchBtnPressed: false,
             showSearchResult: false,
             showDetailContainer: false,
             showPlaylist: false,
             masterId: '',
             selectedPlaylist: 1,
-            list: null,
             playlistSelectLoaded: false
         }
         this.search = this.search.bind(this)
         this.getPlaylists = this.getPlaylists.bind(this)
-        this.handleChange = this.handleChange.bind(this)
         this.getMasterId = this.getMasterId.bind(this)
         this.onSelectChange = this.onSelectChange.bind(this)
         this.activatePlaylist = this.activatePlaylist.bind(this)
@@ -68,14 +64,6 @@ class AppContainer extends Component {
                     playlistSelectLoaded: true
                 })
             })
-    }
-
-    handleChange (event) {
-        this.setState({
-            searchInputValue: event.target.value,
-            searchBtnPressed: true
-        })
-        this.search(event)
     }
 
     onSelectChange (event) {

@@ -9,7 +9,7 @@ class PlaylistContainer extends Component {
 
         this.state = {
             list: null,
-            coutner: 0
+            counter: 0
         }
 
         this.playNext = this.playNext.bind(this)
