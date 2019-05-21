@@ -46,7 +46,6 @@ class PlaylistContainer extends Component {
             this.getPlaylist(this.props.selectedPlaylist)
         }
     }
-
     componentWillUnmount () {
         this.setState({
             list: null

@@ -73,11 +73,14 @@ class AppContainer extends Component {
     }
 
     activatePlaylist () {
-        this.setState({
-            showPlaylist: true,
-            showSearchResult: false,
-            showDetailContainer: false
-        })
+        this.setState({ showPlaylist: false })
+        setTimeout(() => {
+            this.setState({
+                showPlaylist: true,
+                showSearchResult: false,
+                showDetailContainer: false
+            })
+        }, 10)
     }
 
     componentDidMount () {
