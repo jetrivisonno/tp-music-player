@@ -73,7 +73,11 @@ class PlaylistContainer extends Component {
                     <button type='button' onClick={this.playPrevious}>Prev</button>
                     <button type='button' onClick={this.playNext}>Next</button>
                 </div>
-                {this.state.list !== null ? <PlaylistComponent list={this.state.list} /> : null}
+                {this.state.list !== null
+                    ? <PlaylistComponent
+                        list={this.state.list}
+                        id='playlist-list'
+                    /> : null}
             </div>
         )
     }
