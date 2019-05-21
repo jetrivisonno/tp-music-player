@@ -8,8 +8,8 @@ function generateTrack (target, index) {
     )
 }
 
-const PlaylistComponent = ({ list, id }) => (
-    <div id={id}>
+const PlaylistComponent = ({ list }) => (
+    <div>
         <ul>
             {list.map(generateTrack)}
         </ul>
