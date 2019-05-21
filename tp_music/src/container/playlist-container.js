@@ -76,7 +76,6 @@ class PlaylistContainer extends Component {
                 {this.state.list !== null
                     ? <PlaylistComponent
                         list={this.state.list}
-                        id='playlist-list'
                     /> : null}
             </div>
         )

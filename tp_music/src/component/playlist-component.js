@@ -8,12 +8,10 @@ function generateTrack (target, index) {
     )
 }
 
-const PlaylistComponent = ({ list, id }) => (
-    <div id={id}>
-        <ul>
-            {list.map(generateTrack)}
-        </ul>
-    </div>
+const PlaylistComponent = ({ list }) => (
+    <ul>
+        {list.map(generateTrack)}
+    </ul>
 )
 
 export default PlaylistComponent
