@@ -158,3 +158,46 @@ main {
     flex-direction: column;
     justify-content: flex-start;
 }
+
+/*
+ */
+
+ #detail_id {
+    padding: 1rem;
+    padding-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#detail_id > div:first-child {
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#detail_id > div:nth-child(2) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#detail_id > div:last-child > ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#detail_id > div:last-child > ul > li {
+    display: flex;
+    flex-direction: row;
+}
+
+#detail_id > div:last-child > ul > li > button {
+    margin-left: 1rem;
+    padding: 0.1rem;
+    text-transform: capitalize;
+}

@@ -77,18 +77,18 @@ class DetailContainer extends Component {
 
         return (
 
-            <div>
+            <div id={this.props.id}>
                 <div>
                     {this.state.showVideo
                         ? <YouTube
                             videoId={this.state.videoList[this.state.counter].uri.substr(32)} // defaults -> null
                             opts={opts}
                             onEnd={this.playNext}
-                        /> : <div />}
-                    <div>
-                        <button type='button' onClick={this.playPrevious}>Prev</button>
-                        <button type='button' onClick={this.playNext}>Next</button>
-                    </div>
+                        /> : null}
+                </div>
+                <div>
+                    <button type='button' onClick={this.playPrevious}>Prev</button>
+                    <button type='button' onClick={this.playNext}>Next</button>
                 </div>
                 {this.state.showDetailComponent
                     ? <DetailResultVideo

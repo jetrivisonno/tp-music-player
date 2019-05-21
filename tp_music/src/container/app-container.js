@@ -126,6 +126,7 @@ class AppContainer extends Component {
                         /> : null}
                     {this.state.showDetailContainer
                         ? <DetailContainer
+                            id='detail_id'
                             masterId={this.state.masterId}
                             selectedPlaylist={this.state.selectedPlaylist}
                         /> : null}
