@@ -62,7 +62,7 @@ class PlaylistContainer extends Component {
         }
 
         return (
-            <div>
+            <div id={this.props.id}>
                 {this.state.list !== null
                     ? <Youtube
                         videoId={this.state.list[this.state.counter].uri.substr(32)} // defaults -> null

@@ -113,6 +113,7 @@ class AppContainer extends Component {
                 <main>
                     {this.state.showPlaylist && this.state.playlistSelectLoaded
                         ? <PlaylistContainer
+                            id='playlist_id'
                             selectedPlaylist={this.state.selectedPlaylist}
                             list={this.state.list}
                             getPlaylistById={this.getPlaylistById}
