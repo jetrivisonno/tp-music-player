@@ -12,7 +12,6 @@ const CONTENT_TYPE_JSON = 'application/json'
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
 app.use(function (request, response, next) {
     response.header('Access-Control-Allow-Origin', '*')
     response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-Width, Content-Type, Accept')
