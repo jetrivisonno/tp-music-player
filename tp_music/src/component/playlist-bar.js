@@ -8,9 +8,9 @@ function generateOptions (datas) {
     })
 }
 
-const PlaylistBar = ({ id, name, options, onSelectChange, getPlaylistById, selectedPlaylist }) => (
+const PlaylistBar = ({ id, name, options, onSelectChange, activatePlaylist, selectedPlaylist }) => (
     <div>
-        <button type='button' onClick={() => getPlaylistById(selectedPlaylist)}>Playlist</button>
+        <button type='button' onClick={activatePlaylist}>Playlist</button>
         <select id={id} name={name} onChange={onSelectChange}>
             {generateOptions(options)}
         </select>

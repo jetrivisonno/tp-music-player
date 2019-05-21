@@ -32,7 +32,7 @@ class AppContainer extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.getMasterId = this.getMasterId.bind(this)
         this.onSelectChange = this.onSelectChange.bind(this)
-        this.getPlaylistById = this.getPlaylistById.bind(this)
+        this.activatePlaylist = this.activatePlaylist.bind(this)
     }
 
     search (event) {
@@ -42,7 +42,8 @@ class AppContainer extends Component {
                 this.setState({
                     selections: data.results,
                     showSearchResult: true,
-                    showPlaylist: false
+                    showPlaylist: false,
+                    showDetailContainer: false
                 })
             })
             event.target.value = ''
@@ -79,20 +80,16 @@ class AppContainer extends Component {
 
     onSelectChange (event) {
         this.setState({
-            selectedPlaylist: event.target.value + 1
+            selectedPlaylist: parseInt(event.target.value) + 1
         })
     }
 
-    getPlaylistById (id) {
-        if (this.state.playlistSelectLoaded) {
-            fetch('http://localhost:8080/api/playlists/' + id, { method: 'GET' })
-                .then(response => response.json())
-                .then(response => this.setState({
-                    list: response,
-                    showPlaylist: true,
-                    showSearchResult: false
-                }))
-        }
+    activatePlaylist () {
+        this.setState({
+            showPlaylist: true,
+            showSearchResult: false,
+            showDetailContainer: false
+        })
     }
 
     componentDidMount () {
@@ -118,7 +115,7 @@ class AppContainer extends Component {
                     name='playlistbar'
                     options={this.state.playlists}
                     onSelectChange={this.onSelectChange}
-                    getPlaylistById={this.getPlaylistById}
+                    activatePlaylist={this.activatePlaylist}
                     selectedPlaylist={this.state.selectedPlaylist}
                 />
                 {this.state.showPlaylist && this.state.playlistSelectLoaded

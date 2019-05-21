@@ -8,20 +8,50 @@ class PlaylistContainer extends Component {
         super(props)
 
         this.state = {
-            list: null
+            list: null,
+            coutner: 0
         }
+
+        this.playNext = this.playNext.bind(this)
+        this.playPrevious = this.playPrevious.bind(this)
     }
 
     getPlaylist (id) {
         fetch('http://localhost:8080/api/playlists/' + id, { method: 'GET' })
             .then(response => response.json())
-            .then(response => this.setState({ list: response }))
+            .then(response => this.setState({
+                list: response,
+                counter: 0
+            }))
+            .then(console.log(this.state.list))
+    }
+
+    playNext () {
+        if (this.state.counter < (this.state.list.length - 1)) {
+            this.setState({
+                counter: this.state.counter + 1
+            })
+        }
+    }
+
+    playPrevious () {
+        if (this.state.counter > 0) {
+            this.setState({
+                counter: this.state.counter - 1
+            })
+        }
     }
 
     componentDidMount () {
         if (this.state.list === null) {
             this.getPlaylist(this.props.selectedPlaylist)
         }
+    }
+
+    componentWillUnmount () {
+        this.setState({
+            list: null
+        })
     }
 
     render () {
@@ -32,13 +62,19 @@ class PlaylistContainer extends Component {
                 autoplay: 1
             }
         }
+
         return (
             <div>
-                <YouTube
-                    videoId={this.state.videoList[this.state.counter].uri.substr(32)} // defaults -> null
-                    opts={opts}
-                    onEnd={this.playNext}
-                />
+                {this.state.list !== null
+                    ? <Youtube
+                        videoId={this.state.list[this.state.counter].uri.substr(32)} // defaults -> null
+                        opts={opts}
+                        onEnd={this.playNext}
+                    /> : null}
+                <div>
+                    <button type='button' onClick={this.playPrevious}>Prev</button>
+                    <button type='button' onClick={this.playNext}>Next</button>
+                </div>
                 {this.state.list !== null ? <PlaylistComponent list={this.state.list} /> : null}
             </div>
         )

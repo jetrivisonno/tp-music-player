@@ -28,7 +28,8 @@ class DetailContainer extends Component {
     componentDidMount () {
         this.searchMaster(this.props.masterId)
         this.setState({
-            showDetailComponent: true
+            showDetailComponent: true,
+            counter: 0
         })
     }
 
@@ -76,8 +77,6 @@ class DetailContainer extends Component {
                 autoplay: 1
             }
         }
-
-        console.log(this.state.masterId)
 
         return (
 
